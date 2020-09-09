@@ -310,7 +310,7 @@ func TestRootsOfUnityGeneration(t *testing.T) {
 	for c := 0; c <= 1000; c++ {
 		// Find a generator for the multiplicative subgroup of the field
 		g := RandomFieldGenerator()
-		log.Printf("Generator of G_{r-1}: %v", g.GetString(10))
+		//log.Printf("Generator of G_{r-1}: %v", g.GetString(10))
 
 		k := 1
 		for i := 0; i < 10; i++ {
@@ -319,12 +319,12 @@ func TestRootsOfUnityGeneration(t *testing.T) {
 			FrPow2(&n, k)
 			nn := int(n.ToBigInt().Int64())
 
-			log.Printf("k = %v, n = %v", k, n.GetString(10))
+			//log.Printf("k = %v, n = %v", k, n.GetString(10))
 
 			// Find an nth root of unity
 			omega := GetRootOfUnityFromGen(&g, &n)
 
-			log.Printf("Primitive nth root of unity: %v", omega.GetString(10))
+			//log.Printf("Primitive nth root of unity: %v", omega.GetString(10))
 
 			// Make sure it forms a subgroup
 			var acc Fr = omega

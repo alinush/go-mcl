@@ -10,8 +10,8 @@ if [ ! -d /usr/local/include/mcl ]; then
     cd $tmpdir
     git clone https://github.com/alinush/mcl
     cd mcl/
-    make
-    sudo make install
+    ./build.sh
+    ./install.sh
 )
 fi
 

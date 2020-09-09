@@ -24,6 +24,10 @@ Then, just browse to [http://localhost:6060/pkg/#thirdparty](http://localhost:60
 
 ## Dependencies
 
+This wrapper assumes `herumi/mcl` (or `alinush/mcl`) is installed locally.
+
+Run the following script to take care of this and other dependencies:
+
     ./scripts/install-deps.sh
 
 ## Tests and benchmarks

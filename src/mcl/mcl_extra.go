@@ -114,7 +114,7 @@ func initPrimeFactors() {
 	if acc.Cmp(&br1) != 0 {
 		log.Panicf("Expected primes to multiply to r-1 = %v, but got %v instead", br1.String(), acc.String())
 	} else {
-		log.Infof("Prime factorization of r-1 checks out!")
+		//log.Infof("Prime factorization of r-1 checks out!")
 	}
 }
 
@@ -240,7 +240,7 @@ func RandomFieldGenerator() Fr {
 
 			// Make sure it is not equal to 1
 			if res.IsOne() {
-				log.Warnf("Failed on g^{(r-1)/%v}. Trying another generator...", k.GetString(10))
+				//log.Warnf("Failed on g^{(r-1)/%v}. Trying another generator...", k.GetString(10))
 				good = false
 				break
 			}
