@@ -2,9 +2,9 @@ package main
 
 import "flag"
 import "fmt"
-import . "mcl" // the dot (.) means import everything into the global namespace, since I don't want to have to say mcl.G1 and mcl.G2
+import . "github.com/alinush/go-mcl" // the dot (.) means import everything into the global namespace, since I don't want to have to say mcl.G1 and mcl.G2
 import "testing"
-import "utils"
+import "github.com/alinush/go-mcl/utils"
 
 var _curveArg = utils.GetCurveArgument()
 var _sizeArg = flag.Int("size", 2048, "The number of pairings to compute: \\prod_{i \\in [n]} e(P_i, Q_i)")

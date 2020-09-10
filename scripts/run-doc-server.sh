@@ -11,5 +11,5 @@ echo
 
 (
     cd $sourcedir/
-    GOPATH=$sourcedir godoc -v $@
+    godoc -v $@
 )

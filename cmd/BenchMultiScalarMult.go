@@ -2,9 +2,9 @@ package main
 
 import "flag"
 import "fmt"
-import . "mcl"
+import . "github.com/alinush/go-mcl" // the dot (.) means import everything into the global namespace, since I don't want to have to say mcl.G1 and mcl.G2
 import "testing"
-import "utils"
+import "github.com/alinush/go-mcl/utils"
 
 var _curveArg = utils.GetCurveArgument()
 var _sizeArg = flag.Int("size", 32*32*32, "The size of the multi-scalar multiplication (MSM) benchmark")

@@ -10,9 +10,7 @@ This is a wrapper for `herumi/mcl`'s elliptic curve library that you can import 
 ## Limitations
 
 I disabled support for linking to the `bn256` and `bn384` libraries in `src/mcl.go`, so some curve benchmarks have been removed.
-However, `bn256` and its benchmarks still work.
-
-You can read more about our changes in [this README](src/mcl/README.md).
+However, paradoxically, the `bn256` benchmarks still work.
 
 ## Documentation
 
@@ -44,4 +42,19 @@ To run all benchmarks:
 
     ./scripts/bench-mcl.sh
 
-We include instructions for running benchmarks for a different Golang-based elliptic curve library called [Gurvy](https://github.com/consensys/gurvy) in [this README](src/app/README.md).
+## Differences from herumi/mcl's Golang bindings
+
+Our `mcl.go` file is a combination of two files from [herumi/mcl](https://github.com/herumi/mcl):
+
+    1. [ffi/go/mcl/init.go](https://github.com/herumi/mcl/blob/master/ffi/go/mcl/init.go)
+        - This file just had an `Init()` function, so any future changes to it are easy to integrate.
+    1. [ffi/go/mcl/mcl.go](https://github.com/herumi/mcl/blob/master/ffi/go/mcl/mcl.go)
+        - For this file, a manual diff will need to be done between herumi's version and our version to integrate changes
+
+So to integrate new [herumi/mcl](https://github.com/herumi/mcl) changes into this library, look at the differences via a:
+
+    git clone https://github.com/herumi/mcl
+    diff -rupN mcl/ffi/go/mcl/init.go init.go 
+    diff -rupN mcl/ffi/go/mcl/mcl.go  mcl.go  
+
+Pay close attention to changes in the `#cgo` directives in both of these files, since they will have to be carefully integrated if they change.

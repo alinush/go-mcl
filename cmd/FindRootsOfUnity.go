@@ -3,8 +3,8 @@ package main
 import "flag"
 import "fmt"
 import log "github.com/sirupsen/logrus"
-import "mcl"
-import "utils"
+import "github.com/alinush/go-mcl"
+import "github.com/alinush/go-mcl/utils"
 
 var _curveArg = utils.GetCurveArgument()
 var _kArg = flag.Int("k", 32, "Finds a (2^k)th primitive root of unity")

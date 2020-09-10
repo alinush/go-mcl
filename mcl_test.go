@@ -6,7 +6,7 @@ import log "github.com/sirupsen/logrus"
 import "github.com/stretchr/testify/assert"
 import "os"
 import "testing"
-import "utils"
+import "github.com/alinush/go-mcl/utils"
 
 var _curveArg = utils.GetCurveArgument()
 

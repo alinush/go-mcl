@@ -12,15 +12,14 @@ run_bench() {
     echo
 
     (
-        cd $sourcedir/src/mcl && \
+        cd $sourcedir && \
         go test -v -bench=BenchmarkG1 -benchtime=4000x -test.run=XXX -curve $curve
         go test -v -bench=BenchmarkG2 -benchtime=2000x -test.run=XXX -curve $curve
         go test -v -bench=BenchmarkPairing -benchtime=1000x -test.run=XXX -curve $curve
     )
 
     (
-        cd $sourcedir/src/app && \
-        export GOPATH=$sourcedir
+        cd $scriptdir/../cmd && \
         go run BenchMultiScalarMult.go -size 32 -curve $curve
         go run BenchMultiPairing.go -size 3 -curve $curve
         go run BenchMultiPairing.go -size 10 -curve $curve
@@ -30,7 +29,6 @@ run_bench() {
 #
 # NOTE: I disabled support for linking to the bn256 and bn384 libraries in src/mcl.go, so some curve benchmarks have been removed.
 # Also, no need to pass -tags to 'go test'.
-# (See original file here: https://github.com/alinush/mcl/blob/master/bench.sh)
 # However, the BN254 curve can still be tested/benchmarked.
 #
 run_bench bn254

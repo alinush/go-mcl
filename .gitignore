@@ -1,1 +1,6 @@
-pkg/
+pkg/darwin_amd64
+pkg/mod
+src/
+github.com
+gopkg.in
+golang.org

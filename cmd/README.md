@@ -28,16 +28,3 @@ To run individual benchmarks for multi-exps and multi-pairings:
 
     go run BenchMultiScalarMult.go -size 1000
     go run BenchMultiPairing.go -size 1000
-
-## Gurvy multiexp
-
-Gurvy has a very fast multiexp implementation, but it uses multi-threading.
-The gurvy multithreaded numbers are much faster on a 16 core machine than single-threaded mcl (e.g., 3 mus per G1 exp in Gurvy multiexp of 1024 versus 33 mus in mcl).
-
-    go run BenchGurvyMultiScalarMult.go -size 1024
-
-Without multi-threading, gurvy is still 2x faster than mcl (15 mus versus 33 mus per G1 exp in a multiexp of size 2048).
-
-    GOMAXPROCS=1 go run BenchGurvyMultiScalarMult.go -size=2048
-
-Also, single-threaded gurvy scales much better with larger multiexp size than mcl, which always does 33 mus.
