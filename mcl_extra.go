@@ -132,6 +132,8 @@ func InitFromString(curveStr string) {
 		// Generated using 'go run app/FindRootsOfUnity.go -curve bls12-381'
 		g.SetString("43354073823925847805380740654325203111959447648024832395752560736636494814639", 10)
 		omega.SetString("29888530911446421229717110002157968030004381923472101974504948698264983864162", 10)
+
+		// TODO: forgot to set maxK here? What happened?
 	case "bn254":
 		curve = CurveFp254BNb
 		// Really, only supports maxK = 2, so for all intents and purposes does not support roots of unity
@@ -149,6 +151,7 @@ func InitFromString(curveStr string) {
 		curve = CurveFp382_2
 	case "bls12-381":
 		curve = BLS12_381
+		// TODO: I think this should be moved to 'case "":', no? What happened here?
 		maxK = 32
 	default:
 		log.Panicf("Unknown curve type: %s\n", curveStr)
