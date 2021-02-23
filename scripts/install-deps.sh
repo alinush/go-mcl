@@ -8,10 +8,13 @@ sourcedir=$(cd $scriptdir/..; pwd -P)
 if [ ! -d /usr/local/include/mcl ]; then
 (
     cd $tmpdir
-    git clone https://github.com/alinush/mcl
+    git clone https://github.com/herumi/mcl
     cd mcl/
-    make
-    sudo make install
+    git checkout 35a39d27 #herumi/mcl v1.35
+    cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+    sudo cmake --build build --target install
+    sudo ldconfig
 )
 fi
 

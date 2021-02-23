@@ -59,6 +59,9 @@ const IO_EC_AFFINE = C.MCLBN_IO_EC_AFFINE
 // IO_EC_PROJ --
 const IO_EC_PROJ = C.MCLBN_IO_EC_PROJ
 
+// IRTF -- for SetMapToMode
+const IRTF = 5 /* MCL_MAP_TO_MODE_HASH_TO_CURVE_07 */
+
 // GetFrUnitSize --
 func GetFrUnitSize() int {
 	return int(C.MCLBN_FR_UNIT_SIZE)
@@ -197,8 +200,8 @@ func (x *Fr) SetString(s string, base int) error {
 // Deserialize --
 func (x *Fr) Deserialize(buf []byte) error {
 	// #nosec
-	err := C.mclBnFr_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
-	if err == 0 {
+	n := C.mclBnFr_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
+	if n == 0 || int(n) != len(buf) {
 		return fmt.Errorf("err mclBnFr_deserialize %x", buf)
 	}
 	return nil
@@ -220,6 +223,16 @@ func (x *Fr) SetLittleEndianMod(buf []byte) error {
 	err := C.mclBnFr_setLittleEndianMod(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
 	if err != 0 {
 		return fmt.Errorf("err mclBnFr_setLittleEndianMod %x", err)
+	}
+	return nil
+}
+
+// SetBigEndianMod --
+func (x *Fr) SetBigEndianMod(buf []byte) error {
+	// #nosec
+	err := C.mclBnFr_setBigEndianMod(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
+	if err != 0 {
+		return fmt.Errorf("err mclBnFr_setBigEndianMod %x", err)
 	}
 	return nil
 }
@@ -378,8 +391,8 @@ func (x *Fp) SetString(s string, base int) error {
 // Deserialize --
 func (x *Fp) Deserialize(buf []byte) error {
 	// #nosec
-	err := C.mclBnFp_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
-	if err == 0 {
+	n := C.mclBnFp_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
+	if n == 0 || int(n) != len(buf) {
 		return fmt.Errorf("err mclBnFp_deserialize %x", buf)
 	}
 	return nil
@@ -401,6 +414,16 @@ func (x *Fp) SetLittleEndianMod(buf []byte) error {
 	err := C.mclBnFp_setLittleEndianMod(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
 	if err != 0 {
 		return fmt.Errorf("err mclBnFp_setLittleEndianMod %x", err)
+	}
+	return nil
+}
+
+// SetBigEndianMod --
+func (x *Fp) SetBigEndianMod(buf []byte) error {
+	// #nosec
+	err := C.mclBnFp_setBigEndianMod(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
+	if err != 0 {
+		return fmt.Errorf("err mclBnFp_setBigEndianMod %x", err)
 	}
 	return nil
 }
@@ -531,8 +554,8 @@ func (x *Fp2) Clear() {
 // Deserialize --
 func (x *Fp2) Deserialize(buf []byte) error {
 	// #nosec
-	err := C.mclBnFp2_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
-	if err == 0 {
+	n := C.mclBnFp2_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
+	if n == 0 || int(n) != len(buf) {
 		return fmt.Errorf("err mclBnFp2_deserialize %x", buf)
 	}
 	return nil
@@ -637,8 +660,8 @@ func (x *G1) SetString(s string, base int) error {
 // Deserialize --
 func (x *G1) Deserialize(buf []byte) error {
 	// #nosec
-	err := C.mclBnG1_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
-	if err == 0 {
+	n := C.mclBnG1_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
+	if n == 0 || int(n) != len(buf) {
 		return fmt.Errorf("err mclBnG1_deserialize %x", buf)
 	}
 	return nil
@@ -838,8 +861,8 @@ func (x *G2) SetString(s string, base int) error {
 // Deserialize --
 func (x *G2) Deserialize(buf []byte) error {
 	// #nosec
-	err := C.mclBnG2_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
-	if err == 0 {
+	n := C.mclBnG2_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
+	if n == 0 || int(n) != len(buf) {
 		return fmt.Errorf("err mclBnG2_deserialize %x", buf)
 	}
 	return nil
@@ -1022,8 +1045,8 @@ func (x *GT) SetString(s string, base int) error {
 // Deserialize --
 func (x *GT) Deserialize(buf []byte) error {
 	// #nosec
-	err := C.mclBnGT_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
-	if err == 0 {
+	n := C.mclBnGT_deserialize(x.getPointer(), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
+	if n == 0 || int(n) != len(buf) {
 		return fmt.Errorf("err mclBnGT_deserialize %x", buf)
 	}
 	return nil
