@@ -267,6 +267,11 @@ func (x *Fr) IsNegative() bool {
 	return C.mclBnFr_isNegative(x.getPointer()) == 1
 }
 
+// SetByCSPRNG --
+func (x *Fr) SetByCSPRNG() {
+	x.Random()
+}
+
 // Random --
 func (x *Fr) Random() {
 	err := C.mclBnFr_setByCSPRNG(x.getPointer())
@@ -456,6 +461,11 @@ func (x *Fp) IsOdd() bool {
 // IsNegative -- true if x >= (p + 1) / 2
 func (x *Fp) IsNegative() bool {
 	return C.mclBnFp_isNegative(x.getPointer()) == 1
+}
+
+// SetByCSPRNG --
+func (x *Fp) SetByCSPRNG() {
+	x.Random()
 }
 
 // Random --
