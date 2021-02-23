@@ -1,12 +1,16 @@
 package mcl
 
-import "flag"
-import "fmt"
-import log "github.com/sirupsen/logrus"
-import "github.com/stretchr/testify/assert"
-import "os"
-import "testing"
-import "github.com/alinush/go-mcl/utils"
+import (
+	"flag"
+	"fmt"
+
+	"os"
+	"testing"
+
+	"github.com/alinush/go-mcl/utils"
+	log "github.com/sirupsen/logrus"
+	"github.com/stretchr/testify/assert"
+)
 
 var _curveArg = utils.GetCurveArgument()
 

@@ -35,7 +35,7 @@ First, set up the Go environment:
     source scripts/set-env.sh
 
 To run all tests:
-    
+
     ./scripts/test-mcl.sh
 
 To run all benchmarks:
@@ -54,7 +54,7 @@ Our `mcl.go` file is a combination of two files from [herumi/mcl](https://github
 So to integrate new [herumi/mcl](https://github.com/herumi/mcl) changes into this library, look at the differences via a:
 
     git clone https://github.com/herumi/mcl
-    diff -rupN mcl/ffi/go/mcl/init.go init.go 
-    diff -rupN mcl/ffi/go/mcl/mcl.go  mcl.go  
+    diff -rupN mcl/ffi/go/mcl/init.go init.go
+    diff -rupN mcl/ffi/go/mcl/mcl.go  mcl.go
 
 Pay close attention to changes in the `#cgo` directives in both of these files, since they will have to be carefully integrated if they change.
