@@ -1,8 +1,11 @@
 package mcl
 
-import "fmt"
-import log "github.com/sirupsen/logrus"
-import "math/big"
+import (
+	"fmt"
+	"math/big"
+
+	log "github.com/sirupsen/logrus"
+)
 
 var curve int   // the currently selected elliptic curve
 var r big.Int   // the order r of the elliptic curve (and the field Fr)

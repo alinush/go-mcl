@@ -1,10 +1,13 @@
 package main
 
-import "flag"
-import "fmt"
-import log "github.com/sirupsen/logrus"
-import "github.com/alinush/go-mcl"
-import "github.com/alinush/go-mcl/utils"
+import (
+	"flag"
+	"fmt"
+
+	"github.com/alinush/go-mcl"
+	"github.com/alinush/go-mcl/utils"
+	log "github.com/sirupsen/logrus"
+)
 
 var _curveArg = utils.GetCurveArgument()
 var _kArg = flag.Int("k", 32, "Finds a (2^k)th primitive root of unity")

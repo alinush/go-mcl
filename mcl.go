@@ -7,10 +7,14 @@ package mcl
 #include <mcl/bn.h>
 */
 import "C"
-import "crypto/rand"
-import "fmt"
-import log "github.com/sirupsen/logrus"
-import "unsafe"
+import (
+	"crypto/rand"
+	"fmt"
+
+	"unsafe"
+
+	log "github.com/sirupsen/logrus"
+)
 
 /**
  * Ignored these:
