@@ -14,7 +14,9 @@ if [ ! -d /usr/local/include/mcl ]; then
     cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
     cmake --build build
     sudo cmake --build build --target install
-    sudo ldconfig
+    if [ "$OS" == "Linux" ]; then
+        sudo ldconfig
+    fi
 )
 fi
 
